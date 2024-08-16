@@ -1,9 +1,0 @@
-@startuml
-
-package "Data Processing" {
-    component "ETL Pipeline" as ETL
-    component "Data Transformation" as DataTransformation
-    component "Streaming Processing" as Streaming
-}
-
-@enduml

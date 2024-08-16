@@ -1,0 +1,16 @@
+@startuml data_platform_context
+
+!include <C4/C4_Context>
+!theme C4_superhero from <C4/themes>
+
+Person(user, "Data Scientist")
+System(data_platform, "Data Platform", "Processes and stores data for analytics")
+
+Person(customer, "Customer")
+System(system_A, "Source System A", "Produces raw data")
+
+Rel(user, data_platform, "Uses for data analytics")
+Rel(customer, system_A, "Consumes data from")
+Rel(system_A, data_platform, "Sends data to", "API/Stream")
+
+@enduml

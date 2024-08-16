@@ -1,0 +1,10 @@
+@startuml
+!include <C4/C4_Component>
+
+' Defining the boundary of the storage container
+Container_Boundary(storage, "Storage Solutions") {
+    Component(dataLake, "Data Lake", "Hadoop HDFS", "Stores raw and processed data.")
+    Component(dataWarehouse, "Data Warehouse", "Apache Hive", "Stores processed data for analysis.")
+}
+
+@enduml

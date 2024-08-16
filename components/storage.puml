@@ -1,9 +1,0 @@
-@startuml
-
-package "Data Storage" {
-    database "Data Lake" as DataLake
-    database "Data Warehouse" as DataWarehouse
-    component "Object Storage" as ObjectStorage
-}
-
-@enduml

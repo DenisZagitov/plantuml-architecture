@@ -1,0 +1,6 @@
+@startuml
+!include <C4/C4_Component>
+
+' Defining the Kafka component
+Component(kafka, "Kafka Cluster", "Apache Kafka", "Manages streaming data for real-time processing. ip-adress: 10.10.1.100")
+@enduml

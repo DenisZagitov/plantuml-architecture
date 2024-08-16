@@ -1,9 +1,0 @@
-@startuml
-
-package "Orchestration" {
-    component "Workflow Manager" as WorkflowManager
-    component "Scheduler" as Scheduler
-    component "Monitoring & Alerting" as Monitoring
-}
-
-@enduml

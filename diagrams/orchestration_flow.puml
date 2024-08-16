@@ -1,9 +1,0 @@
-@startuml
-!include ../components/processing.puml
-!include ../components/orchestration.puml
-
-WorkflowManager -right-> ETL
-Scheduler -down-> WorkflowManager
-Monitoring -right-> DataWarehouse
-
-@enduml

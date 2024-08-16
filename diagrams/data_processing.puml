@@ -1,9 +1,0 @@
-@startuml
-!include ../components/storage.puml
-!include ../components/processing.puml
-
-DataLake -down-> DataTransformation
-DataTransformation -down-> Streaming
-Streaming -down-> DataWarehouse
-
-@enduml

@@ -1,0 +1,20 @@
+@startuml data_platform_component
+
+!include <C4/C4_Component>
+!theme C4_superhero from <C4/themes>
+
+Container_Boundary(processing_service, "Processing Service") {
+    Component(ingestion_consumer, "Ingestion_Consumer", "Apache Kafka Consumer", "Reads raw data from Kafka")
+    Component(transformation, "Data_Transformer", "Apache Spark", "Transforms raw data")
+    Component(data_writer, "Data_Writer", "HDFS Writer", "Writes transformed data to HDFS/S3")
+}
+
+System_Ext(kafka, "Apache Kafka", "Stream of raw data")
+System_Ext(hdfs, "HDFS/S3", "Data Lake")
+
+Rel(kafka, ingestion_consumer, "Consumes raw data from")
+Rel(ingestion_consumer, transformation, "Passes raw data to")
+Rel(transformation, data_writer, "Passes transformed data to")
+Rel(data_writer, hdfs, "Stores data in")
+
+@enduml
