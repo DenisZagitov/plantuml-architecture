@@ -1,4 +1,4 @@
-@startuml data_platform_context
+@startuml
 
 !include <C4/C4_Context>
 !theme C4_superhero from <C4/themes>

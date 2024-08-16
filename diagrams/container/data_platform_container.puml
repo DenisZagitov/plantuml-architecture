@@ -1,20 +1,25 @@
-@startuml data_platform_container
+@startuml
 
 !include <C4/C4_Container>
 !theme C4_superhero from <C4/themes>
 
 Container_Boundary(data_platform, "Data Platform") {
-    Container(ingestion, "Ingestion_Service", "Python/Apache Kafka", "Ingests data from external sources")
-    Container(processing, "Processing_Service", "Apache Spark", "Processes and transforms data")
-    Container(storage, "Data_Lake", "HDFS/S3", "Stores raw and processed data")
+    !include ../../src/data_platform/kafka.puml
+    !include ../../src/data_platform/clickhouse.puml
+    !include ../../src/data_platform/postgresql.puml
+    !include ../../src/data_platform/dbt.puml
+    !include ../../src/data_platform/s3.puml
+
+    Component(ingestion_service, "Ingestion Service", "Python", "Ingests data from external sources")
+    Component(processing_service, "Processing Service", "Apache Spark", "Processes and transforms data")
 }
 
-System_Ext(system_A, "Source System A")
-System_Ext(user, "Data Scientist")
-
-Rel(system_A, ingestion, "Sends data to", "API/Stream")
-Rel(ingestion, processing, "Passes raw data to")
-Rel(processing, storage, "Saves processed data in")
-Rel(user, storage, "Queries data from")
+Rel(ingestion_service, kafka_cluster, "Publishes messages to")
+Rel(kafka_cluster, processing_service, "Streams data to")
+Rel(processing_service, postgresql_db, "Stores transformed data in")
+Rel(processing_service, clickhouse_db, "Stores analytics data in")
+Rel(processing_service, s3_bucket, "Stores processed data in S3")
+Rel(dbt_tool, postgresql_db, "Transforms data in")
+Rel(dbt_tool, clickhouse_db, "Transforms data in")
 
 @enduml

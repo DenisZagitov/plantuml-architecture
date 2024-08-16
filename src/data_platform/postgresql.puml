@@ -1,8 +1,8 @@
-@startuml database
+@startuml 
 
 !include <C4/C4_Component>
-!theme C4_superhero from <C4/themes>
 
-Component(database, "Database", "PostgreSQL", "Stores structured data")
+Component(postgresql_db, "PostgreSQL Database", "PostgreSQL", "Relational database for transactional data")
+postgresql_db -> postgresql_db : "IP Address: 10.10.1.102\nDNS: postgresql.prod.local\nVersion: 13"
 
 @enduml

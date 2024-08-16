@@ -1,0 +1,8 @@
+@startuml
+
+!include <C4/C4_Component>
+
+Component(dbt_tool, "dbt", "Data Build Tool", "Transforms data in the data warehouse using SQL-based workflows")
+dbt_tool -> dbt_tool : "Version: 0.19.1"
+
+@enduml

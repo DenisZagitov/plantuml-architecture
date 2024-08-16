@@ -1,6 +1,8 @@
-@startuml
+@startuml kafka_component
+
 !include <C4/C4_Component>
 
-' Defining the Kafka component
-Component(kafka, "Kafka Cluster", "Apache Kafka", "Manages streaming data for real-time processing. ip-adress: 10.10.1.100")
+Component(kafka_cluster, "Kafka Cluster", "Apache Kafka", "Manages streaming data for real-time processing.")
+kafka_cluster -> kafka_cluster : "IP Address: 10.10.1.100\nDNS: kafka.prod.local\nNumber of Brokers: 3\nVersion: 2.8.0"
+
 @enduml

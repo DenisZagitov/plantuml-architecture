@@ -1,20 +1,25 @@
-@startuml data_platform_component
+@startuml
 
 !include <C4/C4_Component>
 !theme C4_superhero from <C4/themes>
 
-Container_Boundary(processing_service, "Processing Service") {
-    Component(ingestion_consumer, "Ingestion_Consumer", "Apache Kafka Consumer", "Reads raw data from Kafka")
-    Component(transformation, "Data_Transformer", "Apache Spark", "Transforms raw data")
-    Component(data_writer, "Data_Writer", "HDFS Writer", "Writes transformed data to HDFS/S3")
+Container_Boundary(data_platform, "Data Platform") {
+    !include ../../src/data_platform/kafka.puml
+    !include ../../src/data_platform/clickhouse.puml
+    !include ../../src/data_platform/postgresql.puml
+    !include ../../src/data_platform/dbt.puml
+    !include ../../src/data_platform/s3.puml
+    
+    Component(ingestion_consumer, "Ingestion Consumer", "Apache Kafka Consumer", "Reads raw data from Kafka")
+    Component(transformation, "Data Transformer", "Apache Spark", "Transforms raw data")
+    Component(data_writer, "Data Writer", "HDFS/S3 Writer", "Writes transformed data to HDFS/S3")
 }
 
-System_Ext(kafka, "Apache Kafka", "Stream of raw data")
-System_Ext(hdfs, "HDFS/S3", "Data Lake")
-
-Rel(kafka, ingestion_consumer, "Consumes raw data from")
+Rel(ingestion_consumer, kafka_cluster, "Consumes raw data from")
 Rel(ingestion_consumer, transformation, "Passes raw data to")
-Rel(transformation, data_writer, "Passes transformed data to")
-Rel(data_writer, hdfs, "Stores data in")
+Rel(transformation, data_writer, "Writes transformed data to")
+Rel(data_writer, s3_bucket, "Stores data in")
+Rel(dbt_tool, postgresql_db, "Transforms data in")
+Rel(dbt_tool, clickhouse_db, "Transforms data in")
 
 @enduml

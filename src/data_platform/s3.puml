@@ -1,0 +1,8 @@
+@startuml
+
+!include <C4/C4_Component>
+
+Component(s3_bucket, "S3 Bucket", "Amazon S3", "Object storage for raw and processed data")
+s3_bucket -> s3_bucket : "Bucket Name: s3://data-platform-prod\nRegion: us-west-2"
+
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+
+!include <C4/C4_Component>
+
+Component(clickhouse_db, "ClickHouse Database", "ClickHouse", "Columnar database for OLAP, optimized for fast queries")
+clickhouse_db -> clickhouse_db : "IP Address: 10.10.1.101\nDNS: clickhouse.prod.local\nVersion: 21.3"
+
+@enduml
