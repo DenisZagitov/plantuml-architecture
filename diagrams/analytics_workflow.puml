@@ -1,0 +1,9 @@
+@startuml
+!include ../components/storage.puml
+!include ../components/analytics.puml
+
+DataWarehouse -down-> BI
+DataWarehouse -down-> DSP
+DSP -down-> MLModel
+
+@enduml

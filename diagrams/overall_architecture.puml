@@ -1,0 +1,23 @@
+@startuml
+!include ../components/data_sources.puml
+!include ../components/storage.puml
+!include ../components/processing.puml
+!include ../components/analytics.puml
+!include ../components/orchestration.puml
+
+DataLake -down-> ETL
+ETL -down-> DataWarehouse
+DataWarehouse -down-> BI
+DataWarehouse -down-> DSP
+DSP -down-> MLModel
+
+CRM -right-> ETL
+ERP -right-> ETL
+Marketing -left-> ETL
+CustomerData -left-> ETL
+
+WorkflowManager -right-> ETL
+Scheduler -down-> WorkflowManager
+Monitoring -right-> DataWarehouse
+
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+
+package "Analytics" {
+    component "BI Tool" as BI
+    component "Data Science Platform" as DSP
+    component "Machine Learning Model" as MLModel
+}
+
+@enduml
