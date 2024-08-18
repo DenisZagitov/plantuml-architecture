@@ -1,6 +1,10 @@
 Methodology:
 https://c4model.com/
 
+Related links:
+https://c4model.com/#Notation
+https://github.com/nielsvanspauwen/pystructurizr
+https://github.com/DrMarkusVoss/pumla/tree/main
 
 Overview:
 Structurizr is an open-source tool that supports the C4 model for visualizing software architecture. It is designed specifically for the "Architecture as Code" approach, allowing teams to define architecture diagrams using code. It integrates well with version control systems, enabling the architecture to evolve with the codebase.
@@ -11,6 +15,9 @@ Scalability: Structurizr scales effectively to handle complex, enterprise-level 
 Code-Based Diagrams: Diagrams are defined in code (e.g., DSLs like PlantUML or YAML), which ensures that they are versioned, maintainable, and can be reviewed like any other piece of code.
 Integration: It integrates well with DevOps pipelines and CI/CD processes, allowing architecture updates to be part of the regular development workflow.
 Collaboration: Structurizr supports team collaboration by enabling shared models and components, making it easier to reuse architectural elements across projects.
+
+Usage: Component(alias, "Label", "Technology", "Description")
+
 
 [C4 model](https://github.com/plantuml-stdlib/C4-PlantUML)
 
